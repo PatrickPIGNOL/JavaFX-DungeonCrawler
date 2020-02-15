@@ -128,9 +128,9 @@ public class Hero
 		Canvas vCanvas = pGraphicsContext.getCanvas();
 		
 		int vCellSize = this.aDungeon.mCellSize();
-		Rectangle vRectangle = new Rectangle(0.0, 0.0, 1024.0, 768.0);
+		Rectangle vRectangle = new Rectangle(40.0, 40.0, 640.0, 480.0);
 		this.aDungeon.mDrawView(pGraphicsContext, vRectangle, new Point2D(this.aX, this.aY), this.aDirrection);
-		this.aDungeon.mDrawMiniMap(pGraphicsContext, new Rectangle(824,0,200,200), new Point2D(this.aX, this.aY), this.aDirrection);
+		this.aDungeon.mDrawMiniMap(pGraphicsContext, new Rectangle(700,40.0,200,200), new Point2D(this.aX, this.aY), this.aDirrection);
 		pGraphicsContext.setEffect(null);
 		
 		pGraphicsContext.setFill(Color.BLACK);
