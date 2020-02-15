@@ -107,7 +107,7 @@ public class GameApplication extends Application
 		
 		double vNanoTimePerSeconds = 1000000000.0;
 		double vMiliTimePerSeconds = vNanoTimePerSeconds / 1000.0;
-		double vFPS = 120;
+		double vFPS = 60;
 		double vNanoTimePerFPS = vNanoTimePerSeconds / vFPS;
 		this.mUpdate(vDeltaTime/vNanoTimePerSeconds);
         // limit acceleration card overheat and CPU usage ...
@@ -134,7 +134,8 @@ public class GameApplication extends Application
 	public void mLoad()
 	{
 	    this.aStage.setTitle("JavaFX : DungeonCrawler");
-	    this.aDungeon = new Dungeon(new Dimension(50,50));
+	    this.aDungeon = new Dungeon(new Dimension(25, 25));
+	    this.aDungeon.mLoad();
 	    this.aHero = new Hero(this.aDungeon, 1, 1);
 	}
 	
