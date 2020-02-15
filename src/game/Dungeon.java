@@ -4,7 +4,9 @@ import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.BlurType;
 import javafx.scene.effect.PerspectiveTransform;
+import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -183,7 +185,7 @@ public class Dungeon
 		Canvas vCanvas = pGraphicsContext.getCanvas();
 		
 		Dimension2D vUnit = new Dimension2D(pView.getWidth() / 20.0, pView.getHeight() / 20.0);
-		
+				
 		PerspectiveTransform vFirstPlanLeftWall = new PerspectiveTransform();
 		vFirstPlanLeftWall.setUlx(pView.getX()+-vUnit.getWidth() * 3);		// Upper left
 		vFirstPlanLeftWall.setUly(pView.getY()+-vUnit.getHeight() * 3);
@@ -656,6 +658,24 @@ public class Dungeon
 		vFourthPlanLeft2Roof.setLly(pView.getY()+vUnit.getHeight() * 7);
 		vFourthPlanLeft2Roof.setLrx(pView.getX()+vUnit.getWidth() * 1);		// Lower right
 		vFourthPlanLeft2Roof.setLry(pView.getY()+vUnit.getHeight() * 7);
+		
+		Shadow vShadow2 = new Shadow();
+		vShadow2.setBlurType(BlurType.GAUSSIAN);
+		vShadow2.setColor(Color.rgb(0, 0, 0, 0.40));
+		vShadow2.setRadius(vCanvas.getHeight());
+		Shadow vShadow3 = new Shadow();
+		vShadow3.setBlurType(BlurType.GAUSSIAN);
+		vShadow3.setColor(Color.rgb(0, 0, 0, 0.40));
+		vShadow3.setRadius(vCanvas.getHeight());
+		Shadow vShadow4 = new Shadow();
+		vShadow4.setBlurType(BlurType.GAUSSIAN);
+		vShadow4.setColor(Color.rgb(0, 0, 0, 0.40));
+		vShadow4.setRadius(vCanvas.getHeight());
+		Shadow vShadow5 = new Shadow();
+		vShadow5.setBlurType(BlurType.GAUSSIAN);
+		vShadow5.setColor(Color.rgb(0, 0, 0, 0.40));
+		vShadow5.setRadius(vCanvas.getHeight());
+		
 		
 		EDungeonMapTerrain vFirstLeft    = null;
 		EDungeonMapTerrain vFirstRight   = null;
@@ -1173,10 +1193,6 @@ public class Dungeon
 			}break;
 		}
 				
-		pGraphicsContext.setEffect(vFirstPlanCenterRoof);
-		pGraphicsContext.drawImage(this.aRoof, 0, 0);
-		pGraphicsContext.setEffect(vFirstPlanCenterGround);
-		pGraphicsContext.drawImage(this.aGround, 0, 0);
 
 		if(vFifthRight2 != null)
 		{
@@ -1191,9 +1207,9 @@ public class Dungeon
 				default:
 				{					
 				}break;
-				
 			}
 		}		
+		pGraphicsContext.setEffect(null);
 		if(vFifthRight1 != null)
 		{
 			switch(vFifthRight1)
@@ -1210,6 +1226,7 @@ public class Dungeon
 				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFifthLeft2 != null)
 		{
 			switch(vFifthLeft2)
@@ -1226,6 +1243,7 @@ public class Dungeon
 				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFifthLeft1 != null)
 		{
 			switch(vFifthLeft1)
@@ -1242,6 +1260,7 @@ public class Dungeon
 				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFifthCenter != null)
 		{
 			switch(vFifthCenter)
@@ -1258,6 +1277,7 @@ public class Dungeon
 				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFourthRight2 != null)
 		{
 			pGraphicsContext.setEffect(vFourthPlanRight2Roof);
@@ -1281,7 +1301,8 @@ public class Dungeon
 				}break;	
 			}
 		}
-		
+
+		pGraphicsContext.setEffect(null);
 		if(vFourthRight1 != null)
 		{
 			pGraphicsContext.setEffect(vFourthPlanRight1Roof);
@@ -1303,7 +1324,8 @@ public class Dungeon
 				}break;	
 			}
 		}
-		
+
+		pGraphicsContext.setEffect(null);
 		if(vFourthLeft2 != null)
 		{
 			pGraphicsContext.setEffect(vFourthPlanLeft2Roof);
@@ -1325,6 +1347,7 @@ public class Dungeon
 				}break;	
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFourthLeft1 != null)
 		{
 			pGraphicsContext.setEffect(vFourthPlanLeft1Roof);
@@ -1346,6 +1369,7 @@ public class Dungeon
 				}break;	
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFourthCenter != null)
 		{
 			switch(vFourthCenter)
@@ -1367,6 +1391,7 @@ public class Dungeon
 				}break;	
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vThirdRight != null)
 		{
 			switch(vThirdRight)
@@ -1390,6 +1415,7 @@ public class Dungeon
 				}break;				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vThirdLeft != null)
 		{
 			switch(vThirdLeft)
@@ -1413,6 +1439,7 @@ public class Dungeon
 				}break;				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vThirdCenter != null)
 		{
 			switch(vThirdCenter)
@@ -1420,7 +1447,7 @@ public class Dungeon
 				case Path:
 				{
 					pGraphicsContext.setEffect(vThirdPlanCenterRoof);
-					pGraphicsContext.drawImage(this.aRoof, 0, 0);		
+					pGraphicsContext.drawImage(this.aRoof, 0, 0);	
 					pGraphicsContext.setEffect(vThirdPlanCenterGround);
 					pGraphicsContext.drawImage(this.aGround, 0, 0);
 				}break;
@@ -1434,6 +1461,7 @@ public class Dungeon
 				}break;
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vSecondRight != null)
 		{
 			switch(vSecondRight)
@@ -1458,6 +1486,7 @@ public class Dungeon
 				}break;				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vSecondLeft != null) 
 		{
 			switch(vSecondLeft)
@@ -1481,6 +1510,7 @@ public class Dungeon
 				}break;	
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vSecondCenter != null) 
 		{
 			switch(vSecondCenter)
@@ -1502,6 +1532,7 @@ public class Dungeon
 				}break;				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFirstLeft != null)
 		{
 			switch(vFirstLeft)
@@ -1524,6 +1555,7 @@ public class Dungeon
 				
 			}
 		}
+		pGraphicsContext.setEffect(null);
 		if(vFirstRight != null)
 		{
 			switch(vFirstRight)
@@ -1545,9 +1577,14 @@ public class Dungeon
 				}break;				
 			}
 		}
-		
+
+		pGraphicsContext.setEffect(vFirstPlanCenterRoof);
+		pGraphicsContext.drawImage(this.aRoof, 0, 0);
+		pGraphicsContext.setEffect(vFirstPlanCenterGround);
+		pGraphicsContext.drawImage(this.aGround, 0, 0);
 		pGraphicsContext.setEffect(null);
 
+		
 		//masquage des contours du dessin de la vue...
 		pGraphicsContext.setFill(Color.BLACK);
 		//*
